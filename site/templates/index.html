@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MarketPulse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./static/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container">
+        <div class="brand">MarketPulse</div>
+        <div class="tag">Stocks. Options. Sectors. At‑a‑glance.</div>
+        <div class="meta" id="last-updated">Updated: {{ last_updated }}</div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="chipbar">
+        <span class="chip active">Last 30D</span>
+        <span class="chip">3M</span>
+        <span class="chip">YTD</span>
+        <span class="chip">vs S&P 500 (^GSPC)</span>
+      </section>
+
+      <section class="grid">
+        <div class="card card-lg">
+          <h2>Industry Performance</h2>
+          <p class="muted">Performance by GICS Sub‑Industry, equal‑weighted within S&P 500</p>
+
+          <table id="industry-table">
+            <thead>
+              <tr>
+                <th>Industry</th>
+                <th>30D</th>
+                <th>vs SPX</th>
+                <th>3M</th>
+                <th>vs SPX</th>
+                <th>YTD</th>
+                <th>vs SPX</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in industry_rows %}
+              <tr>
+                <td>{{ row.industry }}</td>
+                <td class="{{ row.p30d_class }}">{{ row.p30d }}</td>
+                <td class="{{ row.p30d_vs_class }}">{{ row.p30d_vs }}</td>
+                <td class="{{ row.p3m_class }}">{{ row.p3m }}</td>
+                <td class="{{ row.p3m_vs_class }}">{{ row.p3m_vs }}</td>
+                <td class="{{ row.pytd_class }}">{{ row.pytd }}</td>
+                <td class="{{ row.pytd_vs_class }}">{{ row.pytd_vs }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="stack">
+          <div class="card">
+            <h3>Top Traded Stocks</h3>
+            <p class="muted">By last day dollar volume</p>
+            <table id="top-traded">
+              <thead>
+                <tr>
+                  <th>Ticker</th>
+                  <th>$ Vol</th>
+                  <th>Chg</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in top_traded %}
+                <tr>
+                  <td>{{ row.ticker }}</td>
+                  <td>{{ row.dollar_volume }}</td>
+                  <td class="{{ row.change_class }}">{{ row.change_pct }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <h3>Unusual High Volume</h3>
+            <p class="muted">Volume spikes vs 30D avg</p>
+            <table id="unusual-volume">
+              <thead>
+                <tr>
+                  <th>Ticker</th>
+                  <th>Vol</th>
+                  <th>Ratio</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in unusual_volume %}
+                <tr>
+                  <td>{{ row.ticker }}</td>
+                  <td>{{ row.volume }}</td>
+                  <td class="{{ row.ratio_class }}">{{ row.ratio }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <h3>Unusual Options (Top 10)</h3>
+            <p class="muted">Contracts vs 30D avg</p>
+            <table id="unusual-options">
+              <thead>
+                <tr>
+                  <th>Ticker</th>
+                  <th>Contracts</th>
+                  <th>Ratio</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in unusual_options %}
+                <tr>
+                  <td>{{ row.ticker }}</td>
+                  <td>{{ row.contracts }}</td>
+                  <td class="{{ row.ratio_class }}">{{ row.ratio }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% if unusual_options_note %}
+            <p class="muted small">{{ unusual_options_note }}</p>
+            {% endif %}
+          </div>
+        </aside>
+      </section>
+
+      <section class="card">
+        <h2>Dividend Yield Leaders</h2>
+        <p class="muted">Trailing 12‑month yield, S&P 500 constituents</p>
+        <table id="dividend-leaders">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Company</th>
+              <th>Yield</th>
+              <th>Payout</th>
+              <th>Sector</th>
+              <th>Industry</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in dividend_leaders %}
+            <tr>
+              <td>{{ row.ticker }}</td>
+              <td>{{ row.company }}</td>
+              <td class="{{ row.yield_class }}">{{ row.yield }}</td>
+              <td>{{ row.payout }}</td>
+              <td>{{ row.sector }}</td>
+              <td>{{ row.industry }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="container muted small">
+      Data sources: Wikipedia (constituents), Yahoo Finance (prices & dividends), optional Polygon (options). For illustration only. Not investment advice.
+    </footer>
+  </body>
+  
+</html>
+

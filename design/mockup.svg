@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="2000" viewBox="0 0 1400 2000">
+  <defs>
+    <style><![CDATA[
+      .title { font: 700 28px Inter, Arial, sans-serif; fill: #0b1021; }
+      .subtitle { font: 600 18px Inter, Arial, sans-serif; fill: #2b2f42; }
+      .label { font: 600 14px Inter, Arial, sans-serif; fill: #2b2f42; }
+      .small { font: 12px Inter, Arial, sans-serif; fill: #4b4f63; }
+      .pos { fill: #0a7f4f; }
+      .neg { fill: #b22222; }
+      .muted { fill: #8d93a6; }
+      .chip { font: 600 12px Inter, Arial, sans-serif; }
+    ]]></style>
+    <linearGradient id="headerGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#10162f"/>
+      <stop offset="100%" stop-color="#182044"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="140" fill="url(#headerGrad)"/>
+  <text x="60" y="88" class="title" fill="#ffffff">MarketPulse</text>
+  <text x="270" y="88" class="small" fill="#c7ccdf">— Stocks. Options. Sectors. At‑a‑glance.</text>
+
+  <!-- Date / Refresh hint -->
+  <rect x="1080" y="50" rx="10" ry="10" width="250" height="40" fill="#232b55"/>
+  <text x="1095" y="76" class="small" fill="#d7dbec">Updated: YYYY‑MM‑DD 16:00 ET</text>
+
+  <!-- Body background -->
+  <rect x="0" y="140" width="1400" height="1860" fill="#f5f7fb"/>
+
+  <!-- Filters / Chips -->
+  <text x="60" y="192" class="label">Compare periods</text>
+  <g>
+    <rect x="60" y="208" rx="16" ry="16" width="110" height="36" fill="#10162f"/>
+    <text x="88" y="231" class="chip" fill="#fff">Last 30D</text>
+    <rect x="178" y="208" rx="16" ry="16" width="90" height="36" fill="#e6e9f5"/>
+    <text x="205" y="231" class="chip" fill="#2b2f42">3M</text>
+    <rect x="276" y="208" rx="16" ry="16" width="90" height="36" fill="#e6e9f5"/>
+    <text x="302" y="231" class="chip" fill="#2b2f42">YTD</text>
+    <rect x="374" y="208" rx="16" ry="16" width="180" height="36" fill="#e6e9f5"/>
+    <text x="392" y="231" class="chip" fill="#2b2f42">vs S&P 500 (^GSPC)</text>
+  </g>
+
+  <!-- Grid: Left main card -->
+  <g filter="url(#cardShadow)">
+    <rect x="60" y="268" rx="18" ry="18" width="840" height="900" fill="#ffffff"/>
+  </g>
+  <text x="90" y="312" class="subtitle">Industry Performance</text>
+  <text x="90" y="336" class="small muted">Performance by GICS Sub‑Industry, equal‑weighted within S&P 500</text>
+  <!-- Table head -->
+  <g>
+    <rect x="90" y="356" width="780" height="40" fill="#f1f3fa" rx="8" ry="8"/>
+    <text x="110" y="382" class="small">Industry</text>
+    <text x="430" y="382" class="small">30D</text>
+    <text x="520" y="382" class="small">vs SPX</text>
+    <text x="610" y="382" class="small">3M</text>
+    <text x="700" y="382" class="small">vs SPX</text>
+    <text x="790" y="382" class="small">YTD</text>
+    <text x="870" y="382" class="small">vs SPX</text>
+  </g>
+  <!-- Example table rows -->
+  <g>
+    <rect x="90" y="404" width="780" height="44" fill="#ffffff"/>
+    <text x="110" y="432" class="small">Semiconductors</text>
+    <text x="430" y="432" class="small pos">+6.2%</text>
+    <text x="520" y="432" class="small pos">+1.9%</text>
+    <text x="610" y="432" class="small pos">+12.4%</text>
+    <text x="700" y="432" class="small pos">+4.3%</text>
+    <text x="790" y="432" class="small pos">+28.1%</text>
+    <text x="870" y="432" class="small pos">+9.8%</text>
+  </g>
+  <g>
+    <rect x="90" y="448" width="780" height="44" fill="#fbfcff"/>
+    <text x="110" y="476" class="small">Oil & Gas Exploration</text>
+    <text x="430" y="476" class="small neg">-2.1%</text>
+    <text x="520" y="476" class="small neg">-1.5%</text>
+    <text x="610" y="476" class="small">+1.2%</text>
+    <text x="700" y="476" class="small neg">-0.8%</text>
+    <text x="790" y="476" class="small">+3.5%</text>
+    <text x="870" y="476" class="small">+0.4%</text>
+  </g>
+  <!-- Placeholder rows -->
+  <text x="110" y="520" class="small muted">… more industries rendered by generator …</text>
+
+  <!-- Right column: Highlights -->
+  <g filter="url(#cardShadow)">
+    <rect x="930" y="268" rx="18" ry="18" width="410" height="420" fill="#ffffff"/>
+  </g>
+  <text x="960" y="312" class="subtitle">Top Traded Stocks</text>
+  <text x="960" y="336" class="small muted">By last day dollar volume</text>
+  <g>
+    <rect x="960" y="356" width="350" height="40" fill="#f1f3fa" rx="8" ry="8"/>
+    <text x="980" y="382" class="small">Ticker</text>
+    <text x="1120" y="382" class="small">$ Vol</text>
+    <text x="1230" y="382" class="small">Chg</text>
+  </g>
+  <text x="980" y="426" class="small">AAPL</text>
+  <text x="1120" y="426" class="small">$28.4B</text>
+  <text x="1230" y="426" class="small neg">-0.6%</text>
+  <text x="980" y="452" class="small">NVDA</text>
+  <text x="1120" y="452" class="small">$22.7B</text>
+  <text x="1230" y="452" class="small pos">+1.8%</text>
+  <text x="980" y="478" class="small">MSFT</text>
+  <text x="1120" y="478" class="small">$19.3B</text>
+  <text x="1230" y="478" class="small">+0.2%</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="930" y="708" rx="18" ry="18" width="410" height="460" fill="#ffffff"/>
+  </g>
+  <text x="960" y="752" class="subtitle">Unusual Activity</text>
+  <text x="960" y="778" class="small muted">Volume spikes vs 30D avg</text>
+  <g>
+    <rect x="960" y="796" width="350" height="40" fill="#f1f3fa" rx="8" ry="8"/>
+    <text x="980" y="822" class="small">Ticker</text>
+    <text x="1120" y="822" class="small">Vol x̄</text>
+    <text x="1230" y="822" class="small">Ratio</text>
+  </g>
+  <text x="980" y="866" class="small">PLTR</text>
+  <text x="1120" y="866" class="small">68M</text>
+  <text x="1230" y="866" class="small pos">3.4×</text>
+  <text x="980" y="892" class="small">AMD</text>
+  <text x="1120" y="892" class="small">54M</text>
+  <text x="1230" y="892" class="small pos">2.8×</text>
+
+  <text x="960" y="944" class="subtitle">Unusual Options (Top 10)</text>
+  <text x="960" y="970" class="small muted">Contracts vs 30D avg</text>
+  <text x="980" y="998" class="small">— populated by generator when API is set —</text>
+
+  <!-- Second row: Dividend yields full width card -->
+  <g filter="url(#cardShadow)">
+    <rect x="60" y="1200" rx="18" ry="18" width="1280" height="500" fill="#ffffff"/>
+  </g>
+  <text x="90" y="1244" class="subtitle">Dividend Yield Leaders</text>
+  <text x="90" y="1268" class="small muted">Trailing 12‑month yield, S&P 500 constituents</text>
+  <g>
+    <rect x="90" y="1288" width="1220" height="40" fill="#f1f3fa" rx="8" ry="8"/>
+    <text x="110" y="1314" class="small">Ticker</text>
+    <text x="220" y="1314" class="small">Company</text>
+    <text x="760" y="1314" class="small">Yield</text>
+    <text x="860" y="1314" class="small">Payout</text>
+    <text x="980" y="1314" class="small">Sector</text>
+    <text x="1140" y="1314" class="small">Industry</text>
+  </g>
+  <text x="110" y="1360" class="small">T</text>
+  <text x="220" y="1360" class="small">AT&T Inc.</text>
+  <text x="760" y="1360" class="small pos">6.1%</text>
+  <text x="860" y="1360" class="small">$1.11</text>
+  <text x="980" y="1360" class="small">Comm Services</text>
+  <text x="1140" y="1360" class="small">Telecom Services</text>
+
+  <!-- Footer -->
+  <text x="60" y="1758" class="small muted">Data sources: Wikipedia (constituents), Yahoo Finance (prices & dividends), optional Polygon (options)</text>
+  <text x="60" y="1780" class="small muted">For illustration only. Not investment advice.</text>
+</svg>
+
